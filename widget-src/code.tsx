@@ -1,9 +1,50 @@
 // This is a counter widget with buttons to increment and decrement the number.
 
+
 const { widget } = figma
 const { useSyncedState, AutoLayout, Text, SVG } = widget
 
 const ColorSelecterWidget = () => {
+  const colorList = [
+    'primary',
+    'primary-hover',
+    'secondary',
+    'secondary-hover',
+    'contrast',
+    'contrast-hover',
+    'contrast-inverse',
+    'bg',
+    'bg-1',
+    'cancel',
+    'card',
+    'inverse',
+    'disabled',
+    'disabled-border',
+    'info',
+    'info-hover',
+    'info-light',
+    'link',
+    'link-hover',
+    'link-light',
+    'success',
+    'success-hover',
+    'success-light',
+    'warning',
+    'warning-hover',
+    'warning-light',
+    'danger',
+    'danger-hover',
+    'danger-light',
+    'muted',
+    'text-h1',
+    'text-h2',
+    'text-h3',
+    'text-body',
+    'text-sub',
+    'text-caption',
+    'text-disabled'
+  ];
+
   const [count, setCount] = useSyncedState('count', 0);
 
   const replaceColor = (flag:string, name:string) => {
@@ -16,7 +57,7 @@ const ColorSelecterWidget = () => {
     const color = (depth2.fills as SolidPaint[])[0].color;
     
     const target = figma.getLocalPaintStyles().filter(el => el.name === `color-${name}`)[0];
-
+    console.log(objectName, target, color);
 
     if(target) {
       target.paints = [
@@ -29,47 +70,13 @@ const ColorSelecterWidget = () => {
         }
       ]
     }
-      
   }
 
   const replaceColorList = (flag: string) => {
-    replaceColor(flag, 'primary');
-    replaceColor(flag, 'primary-hover');
-    replaceColor(flag, 'secondary');
-    replaceColor(flag, 'secondary-hover');
-    replaceColor(flag, 'contrast');
-    replaceColor(flag, 'contrast-hover');
-    replaceColor(flag, 'contrast-inverse');
-    replaceColor(flag, 'bg');
-    replaceColor(flag, 'bg-1');
-    replaceColor(flag, 'cancel');
-    replaceColor(flag, 'card');
-    replaceColor(flag, 'inverse');
-    replaceColor(flag, 'disabled');
-    replaceColor(flag, 'disabled-border');
-    replaceColor(flag, 'info');
-    replaceColor(flag, 'info-hover');
-    replaceColor(flag, 'info-light');
-    replaceColor(flag, 'link');
-    replaceColor(flag, 'link-hover');
-    replaceColor(flag, 'link-light');
-    replaceColor(flag, 'success');
-    replaceColor(flag, 'success-hover');
-    replaceColor(flag, 'success-light');
-    replaceColor(flag, 'warning');
-    replaceColor(flag, 'warning-hover');
-    replaceColor(flag, 'warning-light');
-    replaceColor(flag, 'danger');
-    replaceColor(flag, 'danger-hover');
-    replaceColor(flag, 'danger-light');
-    replaceColor(flag, 'muted');
-    replaceColor(flag, 'text-h1');
-    replaceColor(flag, 'text-h2');
-    replaceColor(flag, 'text-h3');
-    replaceColor(flag, 'text-body');
-    replaceColor(flag, 'text-sub');
-    replaceColor(flag, 'text-caption');
-    replaceColor(flag, 'text-disabled');
+    for (let i = 0; i < colorList.length; i++) {
+      const name = colorList[i];
+      replaceColor(flag, name);
+    }
   }
   return (
     <AutoLayout
