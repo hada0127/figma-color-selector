@@ -41,6 +41,7 @@ const ColorSelecterWidget = () => {
     replaceColor(flag, 'contrast-hover');
     replaceColor(flag, 'contrast-inverse');
     replaceColor(flag, 'bg');
+    replaceColor(flag, 'bg-1');
     replaceColor(flag, 'cancel');
     replaceColor(flag, 'card');
     replaceColor(flag, 'inverse');
